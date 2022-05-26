@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SOGI: Portfolio</title>
+        <title>SOGI</title>
         <meta charset="UTF-8">
         <meta name="description" content="SOGI's portfolio and Blog post">
-        <meta name="author" content="SOGI: Nirmal Rawal">
+        <meta name="author" content="SOGI | Nirmal Rawal">
     </head>
 <style>
     body,
@@ -32,7 +32,7 @@
         text-align: center;
     }
 
-    .bottomleft {
+    .bottom {
         position: absolute;
         top: 90%;
         left: 50%;
@@ -70,10 +70,9 @@
             <hr>
             <p id="timer" style="font-size:30px"></p>
         </div>
-        <div class="bottomleft">
+        <div class="bottom">
             <p>
                 <h6><a href="mailto:sxoxgxi@duck.com" style="text-decoration: none; color: white;">sxoxgxi@duck.com</a><span> | <a href="https://github.com/sxoxgxi" style="text-decoration: none; color:white;">Github</a></span></h6>
-                Made with ❤️ with <a href="https://docs.djangoproject.com/en/4.0/" style="text-decoration: none; color: rgb(39, 129, 56);">Django</a>
             </p>
         </div>
     </div>
@@ -95,7 +94,7 @@
             document.getElementById("timer").innerHTML = days + "d " + hours + "h "
                 + minutes + "m " + seconds + "s ";
 
-            if (distance < 0) {
+            if (diff < 0) {
                 clearInterval(timer);
                 document.getElementById("timer").innerHTML = "Waiting for SOGI";
             }
