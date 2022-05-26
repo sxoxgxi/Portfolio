@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SOGI</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="SOGI's portfolio and Blog post">
-        <meta name="author" content="SOGI | Nirmal Rawal">
-    </head>
+{% extends "base/main.html" %}
+
+{% block content %}
+  
 <style>
     body,
     html {
@@ -23,7 +19,7 @@
         font-family: "Courier New", Courier, monospace;
         font-size: 25px;
     }
-
+    
     .top {
         position: absolute;
         top: 10%;
@@ -31,16 +27,32 @@
         transform: translate(-50%, -50%);
         text-align: center;
     }
-
+    
+    .topleft {
+        position: absolute;
+        top: 3%;
+        left: 16px;
+        text-align: center;
+    }
+    .topright {
+        position: absolute;
+        top: 3%;
+        right: 16px;
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
     .bottom {
         position: absolute;
         top: 90%;
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
-
+        
     }
-
+    
     .middle {
         position: absolute;
         top: 50%;
@@ -48,7 +60,7 @@
         transform: translate(-50%, -50%);
         text-align: center;
         color: #10EE67;
-
+        
     }
     h6 {
         margin-top:5px;
@@ -59,12 +71,16 @@
     }
 </style>
 
-<body>
-
-    <div class="image">
-        <div class="top">
-            <h1>SOGI</h1>
-        </div>
+<div class="image">
+    <div class="top">
+        <h1>SOGI</h1>
+    </div>
+    <div class="topright">
+        <h4><a href="">Login</a></h4>
+    </div>
+    <div class="topleft">
+        <h4><a href="{% url 'blog' %}">Blog</a></h4>
+    </div>
         <div class="middle">
             <h2 style="color: white;">Under Construction</h2>
             <hr>
@@ -76,31 +92,28 @@
             </p>
         </div>
     </div>
-
+    
     <script>
         var to = new Date("June 10, 2022 15:37:25").getTime();
-
+        
         var timer = setInterval(function () {
-
+            
             var now = new Date().getTime();
-
+            
             var diff = to - now;
-
+            
             var days = Math.floor(diff / (1000 * 60 * 60 * 24));
             var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
+            
             document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
-
+            + minutes + "m " + seconds + "s ";
+            
             if (diff < 0) {
                 clearInterval(timer);
                 document.getElementById("timer").innerHTML = "Waiting for SOGI";
             }
         }, 1000);
     </script>
-
-</body>
-
-</html>
+{% endblock content %}
