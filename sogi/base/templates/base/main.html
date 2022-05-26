@@ -8,6 +8,26 @@
     <title>SOGI</title>
 </head>
 <body>
+    <style>
+        .nav-link {
+            display: inline-block;
+
+            color: rgb(0, 0, 0);
+
+            text-align: center;
+            line-height: 3%px;
+
+            text-decoration: none;
+        }
+        #about {
+            position: absolute;
+            top: 7px;
+            right: 16px;
+            display: inline-block;
+        }
+    </style>
+    {% include "base/navbar.html" %}
+    <hr>
     {% block content %}
       
     {% endblock content %}
