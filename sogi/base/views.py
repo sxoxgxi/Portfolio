@@ -23,4 +23,4 @@ def blog_detail(request, id):
 
 
 def login(request):
-    return HttpResponse("<center><p>404 Not Found</p> Try again later <p> <img src='https://media1.tenor.com/images/bd900a9a994238168c8e843cc3a575a6/tenor.gif' alt='Not found'></p></center>", status=404)
+    return render(request, 'base/error.html', status=404)
