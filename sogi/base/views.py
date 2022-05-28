@@ -1,7 +1,7 @@
-from multiprocessing import context
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect
+# from django.http import HttpResponse
 from .models import User, Post, Comment
 
 
@@ -22,5 +22,17 @@ def blog_detail(request, id):
     return render(request, 'base/blog_detail.html', context)
 
 
-def login(request):
-    return render(request, 'base/error.html', status=404)
+def loginView(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        try:
+            user = authenticate(request, username=username, password=password)
+        except Exception as e:
+            context = {'error': e}
+            return render(request, 'base/error.html', context, status=401)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
