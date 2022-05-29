@@ -83,9 +83,16 @@
     <div class="top">
         <h1>SOGI</h1>
     </div>
+    {% if user.is_authenticated %}
+      
+    <div class="topright">
+        <h4><a href="{% url 'logout' %}">Logout</a></h4>
+    </div>
+    {% else %}
     <div class="topright">
         <h4><a href="{% url 'login' %}">Login</a></h4>
     </div>
+    {% endif %}
     <div class="topleft">
         <h4><a href="{% url 'blog' %}">Blog</a></h4>
     </div>

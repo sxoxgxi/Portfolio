@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.shortcuts import redirect
 # from django.http import HttpResponse
@@ -54,3 +54,8 @@ def loginView(request):
             return render(request, 'base/error.html', context, status=401)
     
     return render(request, 'base/login.html', {'page': page})
+
+def logoutView(request):
+    logout(request)
+    return redirect('home')
+

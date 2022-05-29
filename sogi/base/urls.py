@@ -6,4 +6,5 @@ urlpatterns = [
     path('blog/', views.blog, name="blog"),
     path('blog/<str:id>', views.blog_detail, name="blog_detail"),
     path('login/', views.loginView, name="login"),
+    path('logout/', views.logoutView, name="logout"),
 ]
