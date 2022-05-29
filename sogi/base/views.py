@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
 from django.shortcuts import redirect
 # from django.http import HttpResponse
 from .models import User, Post, Comment
+from .forms import MyUser
 
 
 def index(request):
@@ -54,6 +56,25 @@ def loginView(request):
             return render(request, 'base/error.html', context, status=401)
     
     return render(request, 'base/login.html', {'page': page})
+
+@csrf_protect
+def registerView(request):
+    form = MyUser()
+    context = {'form': form,
+               "error": "The server is unavailable to handle this request right now. Something went wrong while processing the request. Try again later.",
+               'status': '503 - Service Unavailable'}
+    if request.method == 'POST':
+        form = MyUser(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, "base/error.html", context, status=503)
+    return render(request, "base/login.html", context)
+
 
 def logoutView(request):
     logout(request)
