@@ -2,8 +2,9 @@
 
 {% block content %}
   
-<div>
-    <h3>{{user.username}}</h3>
+<div class="content-wrapper">
+    <h3>{{user.username|capfirst}}</h3>
+    <p><a href="https://duckduckgo.com/?q={{author}}">{{quote}}</a></p>
 </div>
 
 {% endblock content %}

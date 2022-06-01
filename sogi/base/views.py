@@ -1,9 +1,11 @@
+from operator import ge
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 from .models import User, Post, Comment
 from .forms import MyUser
+from .faxs import get_quote
 
 
 def index(request):
@@ -81,6 +83,8 @@ def logoutView(request):
 
 def profileView(request, id):
     user = User.objects.get(id=id)
-    context = {'user': user}
+    quote = get_quote()[0]
+    author = get_quote()[1]
+    context = {'user': user, 'quote': quote, 'author': author}
     return render(request, "base/profile.html", context)
 
