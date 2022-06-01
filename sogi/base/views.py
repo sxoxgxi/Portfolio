@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 from .models import User, Post, Comment
 from .forms import MyUser
@@ -79,4 +78,9 @@ def registerView(request):
 def logoutView(request):
     logout(request)
     return redirect('home')
+
+def profileView(request, id):
+    user = User.objects.get(id=id)
+    context = {'user': user}
+    return render(request, "base/profile.html", context)
 
