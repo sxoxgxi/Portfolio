@@ -1,4 +1,3 @@
-from operator import ge
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect
@@ -87,4 +86,3 @@ def profileView(request, id):
     author = get_quote()[1]
     context = {'user': user, 'quote': quote, 'author': author}
     return render(request, "base/profile.html", context)
-
