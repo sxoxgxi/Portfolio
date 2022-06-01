@@ -1,15 +1,17 @@
 {% extends "base/main.html" %}
 {% block content %}
   
-    <h3>{{post}}</h3>
-    <p>{{post.content}}</p>
-    <hr>
-    <h3>Comments</h3>
-    <hr>
-    {% for comment in comments %}
-      <small><em>{{comment.updated|timesince}} ago</em></small>
-      <p>- {{comment}}</p>
+<div class="post-wrapper">
+      <h3>{{post}}</h3>
+      <p>{{post.content}}</p>
       <hr>
-    {% endfor %}
+      <h3>Comments</h3>
+      <hr>
+      {% for comment in comments %}
+        <small><em>{{comment.updated|timesince}} ago</em></small>
+        <p>- {{comment}}</p>
+        <hr>
+      {% endfor %}
+</div>
 
 {% endblock content %}
