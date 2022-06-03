@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 # from django.http import HttpResponse
 from .models import User, Post, Comment
 from .forms import MyUser
@@ -20,6 +21,12 @@ def blog(request):
 def blog_detail(request, id):
     post = Post.objects.get(id=id)
     comments = post.comment_set.all()
+    if request.method == 'POST':
+        comment = Comment.objects.create(
+            post = post,
+            body = request.POST.get('comment')
+        )
+        # return redirect('blog_detail', post.id)
     context = {'post': post, 'comments': comments}
     return render(request, 'base/blog_detail.html', context)
 
