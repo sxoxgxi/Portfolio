@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # from django.http import HttpResponse
 from .models import User, Post, Comment
-from .forms import MyUser
+from .forms import MyUser, Blog
 from .faxs import get_quote
 
 
@@ -93,3 +93,5 @@ def profileView(request, id):
     author = get_quote()[1]
     context = {'user': user, 'quote': quote, 'author': author}
     return render(request, "base/profile.html", context)
+
+# def blog(request):
