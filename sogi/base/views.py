@@ -94,4 +94,9 @@ def profileView(request, id):
     context = {'user': user, 'quote': quote, 'author': author}
     return render(request, "base/profile.html", context)
 
-# def blog(request):
+
+def createView(request):
+    form = Blog()
+    context = {'form': form}
+    return render(request, "base/create.html", context)
+    
