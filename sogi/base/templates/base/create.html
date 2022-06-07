@@ -2,11 +2,11 @@
 
 {% block content %}
   <div>
-      <form action="" method="POST">
+      <form action="{% url 'blog' %}" method="POST">
           {% csrf_token %}
           {{form.media}}
           {{form.as_p}}
       </form>
-      <input type="submit" value="Create">
+      <input type="submit">
   </div>
 {% endblock content %}
