@@ -23,6 +23,7 @@ def blog_detail(request, id):
     comments = post.comment_set.all()
     if request.method == 'POST':
         comment = Comment.objects.create(
+            user=request.user,
             post=post,
             body=request.POST.get('comment')
         )

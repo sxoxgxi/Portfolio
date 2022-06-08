@@ -28,6 +28,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, default="Anonymous")
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now=True)
